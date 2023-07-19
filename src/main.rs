@@ -9,7 +9,7 @@ use matrix_sdk::{
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenv::dotenv()?;
-    let user_id_env = env::var("UID_MATRIX").expect("PW supplied");
+    let user_id_env = env::var("UID_MATRIX").expect("UID supplied");
     let user_id = <&UserId>::try_from(user_id_env.as_str()).expect("parse user id");
     let pw = env::var("PW_MATRIX").expect("PW supplied");
     let client = Client::builder().user_id(user_id).build().await?;
